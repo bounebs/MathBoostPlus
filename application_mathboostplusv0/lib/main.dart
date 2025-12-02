@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,14 +53,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Page d'accueil")),
-    );
-  }
-}
+ 
