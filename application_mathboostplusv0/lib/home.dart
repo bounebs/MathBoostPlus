@@ -36,17 +36,28 @@ class HomePage extends StatelessWidget {
             CircleAvatar(
               radius: 25,
               backgroundColor: Colors.blue.shade200,
-              child: const Icon(Icons.person, color: Colors.white),
+              child: const Icon(
+                Icons.onetwothree,
+                color: Colors.white,
+                semanticLabel: 'Révision'),
             ),
 
             // Zone centrale (validation / check)
-            const Icon(Icons.check, size: 40, color: Colors.white),
+            const Icon(
+              Icons.check, 
+              size: 40, 
+              color: Colors.white,
+              semanticLabel: 'Quizz'
+            ),
 
             // Bouton droit
             CircleAvatar(
               radius: 25,
               backgroundColor: Colors.green.shade300,
-              child: const Icon(Icons.settings, color: Colors.white),
+              child: const Icon(
+                Icons.settings, 
+                color: Colors.white,
+                semanticLabel: 'Paramètres'),
             )
           ],
         ),
@@ -57,25 +68,22 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Barre de recherche
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade100,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.search),
-                    hintText: "Recherche...",
-                    border: InputBorder.none,
-                  ),
+              // Texte au dessus de la liste d'items
+              Center(
+                child : Text(
+                  "Veuillez séléctonner une classe pour commencer",
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight : FontWeight.bold, 
+                    color: Color.fromARGB(255, 3, 124, 223)
+                  )
                 ),
               ),
 
-              const SizedBox(height: 20),
-
+              const SizedBox(height: 25),
+          
               // Liste d’items
               Expanded(
                 child: ListView.builder(
