@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'parametres/parametres.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -77,12 +78,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget pageSettings() {
-    return const Center(
-      child: Text(
-        "Page Paramètres",
-        style: TextStyle(fontSize: 22),
-      ),
-    );
+    return ParametresPage();
   }
 
   // ------------------------
