@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'theme_management.dart'; // le gestionnaire dark mode
 
 class ParametresPage extends StatefulWidget {
   const ParametresPage({super.key});
@@ -8,44 +9,40 @@ class ParametresPage extends StatefulWidget {
 }
 
 class _ParametresPageState extends State<ParametresPage> {
-  // --- Variables d'état (valeurs par défaut) ---
   String langueSelectionnee = 'FR';
-  bool modeSombre = false;
   String tailleTexteSelectionnee = 'Moyen';
-
-  // --- Listes d'options ---
   final List<String> langues = ['FR', 'EN', 'ES'];
   final List<String> taillesTexte = ['Petit', 'Moyen', 'Grand'];
 
   @override
   Widget build(BuildContext context) {
+    // On récupère le mode actuel pour savoir si le switch doit être ON ou OFF
+    bool isDarkMode = themeNotifier.value == ThemeMode.dark;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // --- Titre ---
-            const Center(
+            Center(
               child: Text(
                 "Paramètres",
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  // La couleur du texte s'adapte automatiquement au thème
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
               ),
             ),
             const SizedBox(height: 40),
 
-            // --- 1. Langues ---
+            // --- Langues ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Langues",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                ),
+                const Text("Langues", style: TextStyle(fontSize: 18)),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
@@ -55,16 +52,22 @@ class _ParametresPageState extends State<ParametresPage> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: langueSelectionnee,
-                      icon: const Icon(Icons.arrow_drop_down),
+                      // L'icône change de couleur selon le thème
+                      icon: Icon(Icons.arrow_drop_down, color: Theme.of(context).iconTheme.color),
+                      dropdownColor: Theme.of(context).scaffoldBackgroundColor, // Fond du menu
                       onChanged: (String? newValue) {
-                        setState(() {
-                          langueSelectionnee = newValue!;
-                        });
+                        setState(() => langueSelectionnee = newValue!);
                       },
                       items: langues.map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value),
+                          child: Text(
+                            value,
+                            style: TextStyle(
+                              // Couleur du texte dans le menu
+                              color: Theme.of(context).textTheme.bodyLarge?.color
+                            ),
+                          ),
                         );
                       }).toList(),
                     ),
@@ -75,7 +78,7 @@ class _ParametresPageState extends State<ParametresPage> {
 
             const SizedBox(height: 25),
 
-            // --- 2. Apparence sombre ---
+            // --- Apparence sombre (LE SWITCH) ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -93,11 +96,12 @@ class _ParametresPageState extends State<ParametresPage> {
                   ],
                 ),
                 Switch(
-                  value: modeSombre,
+                  value: isDarkMode, // Utilise la valeur réelle du thème
                   activeColor: Colors.blue,
                   onChanged: (bool value) {
                     setState(() {
-                      modeSombre = value;
+                      // C'est ici qu'on change le thème global !
+                      themeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
                     });
                   },
                 ),
@@ -106,14 +110,11 @@ class _ParametresPageState extends State<ParametresPage> {
 
             const SizedBox(height: 25),
 
-            // --- 3. Taille du texte ---
-            Row(
+            // --- Taille du texte ---
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Taille du texte",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                ),
+                const Text("Taille du texte", style: TextStyle(fontSize: 18)),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
@@ -123,16 +124,20 @@ class _ParametresPageState extends State<ParametresPage> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: tailleTexteSelectionnee,
-                      icon: const Icon(Icons.arrow_drop_down),
+                      icon: Icon(Icons.arrow_drop_down, color: Theme.of(context).iconTheme.color),
+                      dropdownColor: Theme.of(context).scaffoldBackgroundColor,
                       onChanged: (String? newValue) {
-                        setState(() {
-                          tailleTexteSelectionnee = newValue!;
-                        });
+                        setState(() => tailleTexteSelectionnee = newValue!);
                       },
                       items: taillesTexte.map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value),
+                          child: Text(
+                            value,
+                             style: TextStyle(
+                              color: Theme.of(context).textTheme.bodyLarge?.color
+                            ),
+                          ),
                         );
                       }).toList(),
                     ),
