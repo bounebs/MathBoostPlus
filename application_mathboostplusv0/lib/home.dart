@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'parametres/parametres.dart';
+import 'forum/forum.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,6 +24,10 @@ class _HomePageState extends State<HomePage> {
   ];
 
   // ---- PAGES ----
+  Widget pageForum() {
+    return ForumPage();
+  }
+
   Widget pageRevision() {
     return SafeArea(
       child: Padding(
@@ -92,6 +97,7 @@ class _HomePageState extends State<HomePage> {
       body: IndexedStack(
         index: currentIndex,
         children: [
+          pageForum(),
           pageRevision(),
           pageQuizz(),
           pageSettings(),
@@ -111,8 +117,8 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-            // ---- Révision ----
+            
+             // ---- Forum  ----
             GestureDetector(
               onTap: () {
                 setState(() => currentIndex = 0);
@@ -124,9 +130,9 @@ class _HomePageState extends State<HomePage> {
                     radius: 25,
                     backgroundColor: currentIndex == 0
                         ? Colors.blue.shade700
-                        : Colors.blue.shade200,
+                        : Colors.blue.shade300,
                     child: const Icon(
-                      Icons.onetwothree,
+                      Icons.forum,
                       color: Colors.white,
                     ),
                   ),
@@ -145,7 +151,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // ---- Quizz ----
+            // ---- Révision ----
             GestureDetector(
               onTap: () {
                 setState(() => currentIndex = 1);
@@ -153,14 +159,19 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.check,
-                    size: 40,
-                    color: currentIndex == 1 ? Colors.white : Colors.white70,
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: currentIndex == 1
+                        ? Colors.blue.shade700
+                        : Colors.blue.shade200,
+                    child: const Icon(
+                      Icons.onetwothree,
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "Quizz",
+                    "Révision",
                     style: TextStyle(
                       fontSize: 12,
                       color: currentIndex == 1
@@ -173,7 +184,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // ---- Paramètres ----
+            // ---- Quizz ----
             GestureDetector(
               onTap: () {
                 setState(() => currentIndex = 2);
@@ -181,9 +192,37 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Icon(
+                    Icons.check,
+                    size: 40,
+                    color: currentIndex == 2 ? Colors.white : Colors.white70,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "Quizz",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: currentIndex == 2
+                          ? Colors.white
+                          : const Color.fromARGB(255, 3, 124, 223),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // ---- Paramètres ----
+            GestureDetector(
+              onTap: () {
+                setState(() => currentIndex = 3);
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
                   CircleAvatar(
                     radius: 25,
-                    backgroundColor: currentIndex == 2
+                    backgroundColor: currentIndex == 3
                         ? Colors.green.shade700
                         : Colors.green.shade300,
                     child: const Icon(
@@ -196,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                     "Paramètres",
                     style: TextStyle(
                       fontSize: 12,
-                      color: currentIndex == 2
+                      color: currentIndex == 3
                           ? Colors.white
                           : const Color.fromARGB(255, 3, 124, 223),
                       fontWeight: FontWeight.w600,
