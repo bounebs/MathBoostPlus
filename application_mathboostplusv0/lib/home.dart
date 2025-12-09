@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'parametres/parametres.dart';
 import 'forum/forum.dart';
+import 'revision/revision.dart';
+import 'quizz/quizz.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,57 +31,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget pageRevision() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                "Veuillez sélectionner une classe pour commencer",
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 3, 124, 223),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 25),
-
-            Expanded(
-              child: ListView.builder(
-                itemCount: niveaux.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.red.shade100,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Center(
-                      child: Text(
-                        niveaux[index],
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return RevisionPage(niveaux : niveaux);
   }
 
   Widget pageQuizz() {
-    return pageRevision();
+    return QuizzPage(niveaux: niveaux);
   }
 
   Widget pageSettings() {
@@ -192,10 +148,16 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.check,
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: currentIndex == 3
+                        ? Colors.yellow.shade300
+                        : Colors.yellow.shade700,
+                    child : Icon(
+                    Icons.quiz_sharp,
                     size: 40,
                     color: currentIndex == 2 ? Colors.white : Colors.white70,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
