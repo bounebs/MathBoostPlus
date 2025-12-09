@@ -94,12 +94,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "Révision",
+                    "Forum",
                     style: TextStyle(
                       fontSize: 12,
-                      color: currentIndex == 0
-                          ? Colors.white
-                          : const Color.fromARGB(255, 3, 124, 223),
+                      color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -119,8 +117,9 @@ class _HomePageState extends State<HomePage> {
                     radius: 25,
                     backgroundColor: currentIndex == 1
                         ? Colors.blue.shade700
-                        : Colors.blue.shade200,
+                        : Colors.red.shade700,
                     child: const Icon(
+                      size : 40,
                       Icons.onetwothree,
                       color: Colors.white,
                     ),
@@ -130,9 +129,7 @@ class _HomePageState extends State<HomePage> {
                     "Révision",
                     style: TextStyle(
                       fontSize: 12,
-                      color: currentIndex == 1
-                          ? Colors.white
-                          : const Color.fromARGB(255, 3, 124, 223),
+                      color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -150,9 +147,9 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   CircleAvatar(
                     radius: 25,
-                    backgroundColor: currentIndex == 3
-                        ? Colors.yellow.shade300
-                        : Colors.yellow.shade700,
+                    backgroundColor: currentIndex == 2
+                        ? Colors.blue.shade700
+                        : Colors.yellow.shade400,
                     child : Icon(
                     Icons.quiz_sharp,
                     size: 40,
@@ -164,9 +161,7 @@ class _HomePageState extends State<HomePage> {
                     "Quizz",
                     style: TextStyle(
                       fontSize: 12,
-                      color: currentIndex == 2
-                          ? Colors.white
-                          : const Color.fromARGB(255, 3, 124, 223),
+                      color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -185,8 +180,8 @@ class _HomePageState extends State<HomePage> {
                   CircleAvatar(
                     radius: 25,
                     backgroundColor: currentIndex == 3
-                        ? Colors.green.shade700
-                        : Colors.green.shade300,
+                        ? Colors.blue.shade700
+                        : Colors.green.shade700,
                     child: const Icon(
                       Icons.settings,
                       color: Colors.white,
@@ -197,9 +192,7 @@ class _HomePageState extends State<HomePage> {
                     "Paramètres",
                     style: TextStyle(
                       fontSize: 12,
-                      color: currentIndex == 3
-                          ? Colors.white
-                          : const Color.fromARGB(255, 3, 124, 223),
+                      color:Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
