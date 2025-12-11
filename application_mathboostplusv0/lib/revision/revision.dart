@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'revision_6eme/revision_6eme.dart'; // <--- NOUVEL IMPORT
+import 'revision_6eme/revision_6eme.dart'; 
+import 'revision_5eme/revision_5eme.dart';
+import 'revision_4eme/revision_4eme.dart';
+import 'revision_3eme/revision_3eme.dart';
+import 'revision_2nde/revision_2nde.dart';
+import 'revision_1ere/revision_1ere.dart';
+import 'revision_Terminale/revision_Terminale.dart';
 
 class RevisionPage extends StatelessWidget {
   // La liste des niveaux doit être passée en paramètre
@@ -38,20 +44,51 @@ class RevisionPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: niveaux.length,
                 itemBuilder: (context, index) {
+                  final String niveauActuel = niveaux[index];
                   // --- Ajout du GestureDetector autour du Container ---
                   return GestureDetector(
                     onTap: () {
-                      if (niveaux[index] == "6ème") {
-                        // Navigation vers la page des chapitres de 6ème
+                      // Variable pour stocker la page de destination
+                      Widget? pageDestination;
+
+                      // --- GESTION DE LA NAVIGATION PAR SWITCH-CASE ---
+                      switch (niveauActuel) {
+                        case "6ème":
+                          pageDestination = const Revision6emePage();
+                          break;
+                        case "5ème":
+                          pageDestination = const Revision5emePage();
+                          break;
+                        case "4ème":
+                          pageDestination = const Revision4emePage();
+                          break;
+                        case "3ème":
+                          pageDestination = const Revision3emePage();
+                          break;
+                        case "Seconde":
+                          pageDestination = const Revision2ndePage();
+                          break;
+                        case "Première":
+                          pageDestination = const Revision1erePage();
+                          break;
+                        case "Terminale":
+                          pageDestination = const RevisionTerminalePage();
+                          break;
+                        default:
+                          // Si le niveau n'est pas reconnu
+                          print("Niveau non géré : $niveauActuel");
+                          break;
+                      }
+                      // --- FIN DU SWITCH-CASE ---
+
+                      // Si une destination a été trouvée, on navigue
+                      if (pageDestination != null) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Revision6emePage(),
+                            builder: (context) => pageDestination!,
                           ),
                         );
-                      } else {
-                        // Action par défaut pour les autres niveaux
-                        print("Clique sur le niveau : ${niveaux[index]} (Pas de page dédiée)");
                       }
                     },
                     child: Container(
