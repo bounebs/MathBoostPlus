@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+// Liste des quizz pour importer 
+import 'Divisibilite/quizzDivisibiliteFacile.dart';
+import 'Divisibilite/quizzDivisibiliteMoyen.dart';
+import 'Divisibilite/quizzDivisibiliteDifficile.dart';
+import 'Divisibilite/quizzDivisibiliteControle.dart';
+import '../quizz_screen.dart';
 
-class QuizzNiveauPage extends StatelessWidget {
+class QuizzNiveau3emePage extends StatelessWidget {
   // Paramètre requis : le nom du chapitre sélectionné précédemment
   final String nomChapitre;
 
-  const QuizzNiveauPage({
+  const QuizzNiveau3emePage({
     super.key,
     required this.nomChapitre,
   });
@@ -43,8 +49,16 @@ class QuizzNiveauPage extends StatelessWidget {
                 label: "Niveau Facile",
                 color: Colors.green,
                 onTap: () {
-                  print("Lancement Quiz Facile pour $nomChapitre");
-                  // Future navigation vers la page de questions
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizzScreen(
+                      chapitre: nomChapitre,
+                      niveau: "Facile",
+                      quizzData: quizzDivisibiliteFacile, // <--- On passe la liste spécifique ici
+                      ),
+                    ),
+                  );
                 },
               ),
 
@@ -56,7 +70,16 @@ class QuizzNiveauPage extends StatelessWidget {
                 label: "Niveau Moyen",
                 color: Colors.orange,
                 onTap: () {
-                  print("Lancement Quiz Moyen pour $nomChapitre");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizzScreen(
+                      chapitre: nomChapitre,
+                      niveau: "Moyen",
+                      quizzData: quizzDivisibiliteMoyen, // <--- On passe la liste spécifique ici
+                      ),
+                    ),
+                  );                
                 },
               ),
 
@@ -68,7 +91,16 @@ class QuizzNiveauPage extends StatelessWidget {
                 label: "Niveau Difficile",
                 color: Colors.red,
                 onTap: () {
-                  print("Lancement Quiz Difficile pour $nomChapitre");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizzScreen(
+                      chapitre: nomChapitre,
+                      niveau: "Difficile",
+                      quizzData: quizzDivisibiliteDifficile, // <--- On passe la liste spécifique ici
+                      ),
+                    ),
+                  );                
                 },
               ),
 
@@ -78,9 +110,18 @@ class QuizzNiveauPage extends StatelessWidget {
               _buildNiveauButton(
                 context,
                 label: "Type Contrôle",
-                color: Colors.purple, // ou Colors.deepPurple
+                color: const Color.fromARGB(255, 116, 13, 134), // ou Colors.deepPurple
                 onTap: () {
-                  print("Lancement Quiz Contrôle pour $nomChapitre");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizzScreen(
+                      chapitre: nomChapitre,
+                      niveau: "Difficile",
+                      quizzData: quizzDivisibiliteControle, // <--- On passe la liste spécifique ici
+                      ),
+                    ),
+                  );
                 },
               ),
             ],

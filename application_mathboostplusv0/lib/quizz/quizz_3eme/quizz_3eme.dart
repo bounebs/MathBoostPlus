@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../quizz_niveaux.dart';
+import 'quizz_niveaux_3eme.dart';
 
 class Quizz3emePage extends StatelessWidget {
   const Quizz3emePage({super.key});
@@ -61,9 +61,9 @@ class Quizz3emePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => pageDestination!,
+                            builder: (context) => QuizzNiveau3emePage(nomChapitre: nomChapitre),
                           ),
-                        )
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 15),
