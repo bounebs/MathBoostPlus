@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
+import '../quizz_niveaux.dart';
 
 class Quizz3emePage extends StatelessWidget {
   const Quizz3emePage({super.key});
 
-  final List<String> chapitres6eme = const [
-    "Nombres Entiers et Décimaux",
-    "Opérations et Priorités",
-    "Fractions et Quotients",
-    "Droites, Segments et Milieux",
-    "Angles et Mesures",
-    "Aires et Périmètres",
-    "Symétrie Axiale",
-    "Organisation et Gestion de Données",
+  final List<String> chapitres3eme = const [
+    "Nombres et Calculs : Divisibilité",
+    "Nombres et Calculs : PGCD",
+    "Nombres et Calculs : Fractions",
+    "Nombres et Calculs : Puissance et racines carrées",
+    "Calcul littéral : développent et factorisation",
+    "Calcul littéral : Identité remarquable",
+    "Calcul littéral : Équation du 1er degré",
+    "Calcul littéral : Équations-produits",
+    "Calcul littéral : Inéquations du premier degré",
+    "Statistiques : Moyenne, médiane et étendue",
+    "Statistiques : Lecture de diagrammes",
+    "Probabilités : Notion, vocabulaire et calculs",
+    "Fonctions : notions et lecture graphique"
+    "Fonctions : fontion linéaire",
+    "Fonctions : fontion affine",
+    "Géométrie : Théorème de Pythagore",
+    "Géométrie : Trigonométrie",
+    "Géométrie : Théorème de Thalès",
+    "Géométrie : Calcul des aires et volumes",
+    "Programmation : Scratch"
   ];
 
   @override
@@ -40,12 +53,17 @@ class Quizz3emePage extends StatelessWidget {
 
               Expanded(
                 child: ListView.builder(
-                  itemCount: chapitres6eme.length,
+                  itemCount: chapitres3eme.length,
                   itemBuilder: (context, index) {
+                    final String nomChapitre = chapitres3eme[index];
                     return GestureDetector(
                       onTap: () {
-                        // Logique de navigation vers le contenu du chapitre
-                        print("Chapitre cliqué : ${chapitres6eme[index]}");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => pageDestination!,
+                          ),
+                        )
                       },
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 15),
@@ -61,7 +79,7 @@ class Quizz3emePage extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          chapitres6eme[index],
+                          chapitres3eme[index],
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+
+class QuizzNiveauPage extends StatelessWidget {
+  // Paramètre requis : le nom du chapitre sélectionné précédemment
+  final String nomChapitre;
+
+  const QuizzNiveauPage({
+    super.key,
+    required this.nomChapitre,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Quiz : $nomChapitre",
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 1,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch, // Étend les boutons sur la largeur
+            mainAxisAlignment: MainAxisAlignment.center, // Centre verticalement
+            children: [
+              const Text(
+                "Choisissez la difficulté :",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 40),
+
+              // --- Bouton FACILE (Vert) ---
+              _buildNiveauButton(
+                context,
+                label: "Niveau Facile",
+                color: Colors.green,
+                onTap: () {
+                  print("Lancement Quiz Facile pour $nomChapitre");
+                  // Future navigation vers la page de questions
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              // --- Bouton MOYEN (Orange) ---
+              _buildNiveauButton(
+                context,
+                label: "Niveau Moyen",
+                color: Colors.orange,
+                onTap: () {
+                  print("Lancement Quiz Moyen pour $nomChapitre");
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              // --- Bouton DIFFICILE (Rouge) ---
+              _buildNiveauButton(
+                context,
+                label: "Niveau Difficile",
+                color: Colors.red,
+                onTap: () {
+                  print("Lancement Quiz Difficile pour $nomChapitre");
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              // --- Bouton TYPE CONTRÔLE (Violet) ---
+              _buildNiveauButton(
+                context,
+                label: "Type Contrôle",
+                color: Colors.purple, // ou Colors.deepPurple
+                onTap: () {
+                  print("Lancement Quiz Contrôle pour $nomChapitre");
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Widget helper pour éviter de répéter le code des boutons
+  Widget _buildNiveauButton(BuildContext context, {required String label, required Color color, required VoidCallback onTap}) {
+    return SizedBox(
+      height: 60, // Hauteur fixe pour que tous les boutons soient égaux
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color, // La couleur du fond (Vert, Orange, Rouge, Violet)
+          foregroundColor: Colors.white, // Texte en blanc pour la lisibilité
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), // Coins arrondis comme sur le croquis
+          ),
+          elevation: 5, // Légère ombre
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
