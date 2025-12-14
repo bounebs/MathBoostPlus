@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-// Liste des quizz pour importer 
-import 'Divisibilite/quizzDivisibiliteFacile.dart';
-import 'Divisibilite/quizzDivisibiliteMoyen.dart';
-import 'Divisibilite/quizzDivisibiliteDifficile.dart';
-import 'Divisibilite/quizzDivisibiliteControle.dart';
+import 'quizzGestion3eme.dart';
 import '../quizz_screen.dart';
 
 class QuizzNiveau3emePage extends StatelessWidget {
@@ -55,7 +51,7 @@ class QuizzNiveau3emePage extends StatelessWidget {
                       builder: (context) => QuizzScreen(
                       chapitre: nomChapitre,
                       niveau: "Facile",
-                      quizzData: quizzDivisibiliteFacile, // <--- On passe la liste spécifique ici
+                      quizzData: getQuizData(nomChapitre, "Facile"), // <--- On passe la liste spécifique ici
                       ),
                     ),
                   );
@@ -76,7 +72,7 @@ class QuizzNiveau3emePage extends StatelessWidget {
                       builder: (context) => QuizzScreen(
                       chapitre: nomChapitre,
                       niveau: "Moyen",
-                      quizzData: quizzDivisibiliteMoyen, // <--- On passe la liste spécifique ici
+                      quizzData: getQuizData(nomChapitre, "Moyen"), // <--- On passe la liste spécifique ici
                       ),
                     ),
                   );                
@@ -97,7 +93,7 @@ class QuizzNiveau3emePage extends StatelessWidget {
                       builder: (context) => QuizzScreen(
                       chapitre: nomChapitre,
                       niveau: "Difficile",
-                      quizzData: quizzDivisibiliteDifficile, // <--- On passe la liste spécifique ici
+                      quizzData: getQuizData(nomChapitre, "Difficile"), // <--- On passe la liste spécifique ici
                       ),
                     ),
                   );                
@@ -117,8 +113,8 @@ class QuizzNiveau3emePage extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => QuizzScreen(
                       chapitre: nomChapitre,
-                      niveau: "Difficile",
-                      quizzData: quizzDivisibiliteControle, // <--- On passe la liste spécifique ici
+                      niveau: "Contrôle",
+                      quizzData: getQuizData(nomChapitre, "Contrôle"), // <--- On passe la liste spécifique ici
                       ),
                     ),
                   );

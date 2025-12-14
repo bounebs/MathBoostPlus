@@ -1,31 +1,9 @@
 import 'package:flutter/material.dart';
 import 'quizz_niveaux_3eme.dart';
+import '../../chapitres.dart';
 
 class Quizz3emePage extends StatelessWidget {
   const Quizz3emePage({super.key});
-
-  final List<String> chapitres3eme = const [
-    "Nombres et Calculs : Divisibilité",
-    "Nombres et Calculs : PGCD",
-    "Nombres et Calculs : Fractions",
-    "Nombres et Calculs : Puissance et racines carrées",
-    "Calcul littéral : développent et factorisation",
-    "Calcul littéral : Identité remarquable",
-    "Calcul littéral : Équation du 1er degré",
-    "Calcul littéral : Équations-produits",
-    "Calcul littéral : Inéquations du premier degré",
-    "Statistiques : Moyenne, médiane et étendue",
-    "Statistiques : Lecture de diagrammes",
-    "Probabilités : Notion, vocabulaire et calculs",
-    "Fonctions : notions et lecture graphique"
-    "Fonctions : fontion linéaire",
-    "Fonctions : fontion affine",
-    "Géométrie : Théorème de Pythagore",
-    "Géométrie : Trigonométrie",
-    "Géométrie : Théorème de Thalès",
-    "Géométrie : Calcul des aires et volumes",
-    "Programmation : Scratch"
-  ];
 
   @override
   Widget build(BuildContext context) {
