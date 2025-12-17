@@ -39,7 +39,8 @@ class Quizz3emePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => QuizzNiveau3emePage(nomChapitre: nomChapitre),
+                            builder: (context) =>
+                                QuizzNiveau3emePage(nomChapitre: nomChapitre),
                           ),
                         );
                       },
@@ -51,7 +52,8 @@ class Quizz3emePage extends StatelessWidget {
                           color: Colors.lightGreen.shade100,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: Theme.of(context).brightness == Brightness.dark
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
                                 ? Colors.lightGreen.shade300
                                 : Colors.transparent,
                           ),

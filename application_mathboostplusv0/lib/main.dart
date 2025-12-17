@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'App Maths',
-          
+
           // --- THÈME CLAIR (Mode Jour) ---
           theme: ThemeData(
             brightness: Brightness.light,
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: const TextTheme(
               // Texte noir par défaut en mode clair
-              bodyLarge: TextStyle(color: Colors.black), 
+              bodyLarge: TextStyle(color: Colors.black),
               bodyMedium: TextStyle(color: Colors.black),
             ),
           ),
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color(0xFF0D47A1), // Un bleu foncé
             primarySwatch: Colors.blue,
             iconTheme: const IconThemeData(color: Colors.white),
-            
+
             // TEXTE BLANC
             textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Colors.white),
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
 
           // Applique le mode actuel (Clair ou Sombre/Bleu)
           themeMode: currentMode,
-          
+
           // Le Splash Screen est la première page affichée
           home: const SplashScreen(),
         );
@@ -63,15 +63,14 @@ class MyApp extends StatelessWidget {
 // Le reste de votre code SplashScreen ne change pas
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-// ... (reste de la classe SplashScreen)
-// ...
-// ...
+  // ... (reste de la classe SplashScreen)
+  // ...
+  // ...
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();

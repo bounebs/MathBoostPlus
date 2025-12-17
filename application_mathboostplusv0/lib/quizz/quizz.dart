@@ -11,10 +11,7 @@ class QuizzPage extends StatelessWidget {
   // La liste des niveaux doit être passée en paramètre
   final List<String> niveaux;
 
-  const QuizzPage({
-    super.key,
-    required this.niveaux,
-  });
+  const QuizzPage({super.key, required this.niveaux});
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +89,7 @@ class QuizzPage extends StatelessWidget {
                         );
                       }
                     },
-                    child : Container(
+                    child: Container(
                       margin: const EdgeInsets.only(bottom: 15),
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -101,9 +98,9 @@ class QuizzPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                         // Pour le mode sombre, vous pourriez vouloir une bordure foncée
                         border: Border.all(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.yellow.shade700
-                            : Colors.transparent,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.yellow.shade700
+                              : Colors.transparent,
                         ),
                       ),
                       child: Center(

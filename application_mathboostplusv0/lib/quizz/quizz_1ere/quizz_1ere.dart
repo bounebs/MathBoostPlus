@@ -55,7 +55,8 @@ class Quizz1erePage extends StatelessWidget {
                           color: Colors.lightGreen.shade100,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: Theme.of(context).brightness == Brightness.dark
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
                                 ? Colors.lightGreen.shade300
                                 : Colors.transparent,
                           ),

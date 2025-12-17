@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int currentIndex = 0;
 
   final List<String> niveaux = [
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget pageRevision() {
-    return RevisionPage(niveaux : niveaux);
+    return RevisionPage(niveaux: niveaux);
   }
 
   Widget pageQuizz() {
@@ -52,12 +51,7 @@ class _HomePageState extends State<HomePage> {
       // ----- BODY -----
       body: IndexedStack(
         index: currentIndex,
-        children: [
-          pageForum(),
-          pageRevision(),
-          pageQuizz(),
-          pageSettings(),
-        ],
+        children: [pageForum(), pageRevision(), pageQuizz(), pageSettings()],
       ),
 
       // ----- BOTTOM BAR -----
@@ -73,8 +67,7 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            
-             // ---- Forum  ----
+            // ---- Forum  ----
             GestureDetector(
               onTap: () {
                 setState(() => currentIndex = 0);
@@ -87,10 +80,7 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: currentIndex == 0
                         ? Colors.blue.shade700
                         : Colors.blue.shade300,
-                    child: const Icon(
-                      Icons.forum,
-                      color: Colors.white,
-                    ),
+                    child: const Icon(Icons.forum, color: Colors.white),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -119,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                         ? Colors.blue.shade700
                         : Colors.red.shade700,
                     child: const Icon(
-                      size : 40,
+                      size: 40,
                       Icons.onetwothree,
                       color: Colors.white,
                     ),
@@ -150,10 +140,10 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: currentIndex == 2
                         ? Colors.blue.shade700
                         : Colors.yellow.shade400,
-                    child : Icon(
-                    Icons.quiz_sharp,
-                    size: 40,
-                    color: currentIndex == 2 ? Colors.white : Colors.white70,
+                    child: Icon(
+                      Icons.quiz_sharp,
+                      size: 40,
+                      color: currentIndex == 2 ? Colors.white : Colors.white70,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -182,17 +172,14 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: currentIndex == 3
                         ? Colors.blue.shade700
                         : Colors.green.shade700,
-                    child: const Icon(
-                      Icons.settings,
-                      color: Colors.white,
-                    ),
+                    child: const Icon(Icons.settings, color: Colors.white),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     "Paramètres",
                     style: TextStyle(
                       fontSize: 12,
-                      color:Colors.white,
+                      color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

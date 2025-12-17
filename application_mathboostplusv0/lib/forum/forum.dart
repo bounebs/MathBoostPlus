@@ -5,7 +5,7 @@ class ForumPage extends StatelessWidget {
 
   // Couleur utilisée dans les items de classe (Colors.red.shade100)
   static final Color discussionButtonColor = Colors.red.shade100;
-  
+
   // Couleur pour le champ de recherche (bleu)
   static final Color searchButtonColor = Colors.blue.shade700;
 
@@ -38,7 +38,9 @@ class ForumPage extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: searchButtonColor.withOpacity(0.15), // Un fond légèrement bleuté
+                fillColor: searchButtonColor.withOpacity(
+                  0.15,
+                ), // Un fond légèrement bleuté
               ),
               onTap: () {
                 // Logique de recherche à implémenter
@@ -55,7 +57,8 @@ class ForumPage extends StatelessWidget {
                 print('Nouvelle discussion démarrée');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: discussionButtonColor, // Couleur de fond du bouton
+                backgroundColor:
+                    discussionButtonColor, // Couleur de fond du bouton
                 foregroundColor: Colors.black87, // Couleur du texte
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 shape: RoundedRectangleBorder(
@@ -64,15 +67,12 @@ class ForumPage extends StatelessWidget {
               ),
               child: const Text(
                 "Commencer une nouvelle discussion",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
 
             const SizedBox(height: 30),
-            
+
             // Espace pour la liste des discussions (à implémenter plus tard)
             const Text(
               "Discussions récentes :",
@@ -80,9 +80,7 @@ class ForumPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Expanded(
-              child: Center(
-                child: Text("Aucune discussion pour le moment."),
-              ),
+              child: Center(child: Text("Aucune discussion pour le moment.")),
             ),
           ],
         ),

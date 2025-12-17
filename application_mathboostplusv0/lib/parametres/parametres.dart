@@ -53,19 +53,28 @@ class _ParametresPageState extends State<ParametresPage> {
                     child: DropdownButton<String>(
                       value: langueSelectionnee,
                       // L'icône change de couleur selon le thème
-                      icon: Icon(Icons.arrow_drop_down, color: Theme.of(context).iconTheme.color),
-                      dropdownColor: Theme.of(context).scaffoldBackgroundColor, // Fond du menu
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      dropdownColor: Theme.of(
+                        context,
+                      ).scaffoldBackgroundColor, // Fond du menu
                       onChanged: (String? newValue) {
                         setState(() => langueSelectionnee = newValue!);
                       },
-                      items: langues.map<DropdownMenuItem<String>>((String value) {
+                      items: langues.map<DropdownMenuItem<String>>((
+                        String value,
+                      ) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(
                             value,
                             style: TextStyle(
                               // Couleur du texte dans le menu
-                              color: Theme.of(context).textTheme.bodyLarge?.color
+                              color: Theme.of(
+                                context,
+                              ).textTheme.bodyLarge?.color,
                             ),
                           ),
                         );
@@ -87,7 +96,10 @@ class _ParametresPageState extends State<ParametresPage> {
                   children: const [
                     Text(
                       "Apparence sombre",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     Text(
                       "Désactivé par défaut",
@@ -97,11 +109,13 @@ class _ParametresPageState extends State<ParametresPage> {
                 ),
                 Switch(
                   value: isDarkMode, // Utilise la valeur réelle du thème
-                  activeColor: Colors.blue,
+                  activeThumbColor: Colors.blue,
                   onChanged: (bool value) {
                     setState(() {
                       // C'est ici qu'on change le thème global !
-                      themeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
+                      themeNotifier.value = value
+                          ? ThemeMode.dark
+                          : ThemeMode.light;
                     });
                   },
                 ),
@@ -111,7 +125,7 @@ class _ParametresPageState extends State<ParametresPage> {
             const SizedBox(height: 25),
 
             // --- Taille du texte ---
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text("Taille du texte", style: TextStyle(fontSize: 18)),
@@ -124,18 +138,25 @@ class _ParametresPageState extends State<ParametresPage> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: tailleTexteSelectionnee,
-                      icon: Icon(Icons.arrow_drop_down, color: Theme.of(context).iconTheme.color),
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
                       dropdownColor: Theme.of(context).scaffoldBackgroundColor,
                       onChanged: (String? newValue) {
                         setState(() => tailleTexteSelectionnee = newValue!);
                       },
-                      items: taillesTexte.map<DropdownMenuItem<String>>((String value) {
+                      items: taillesTexte.map<DropdownMenuItem<String>>((
+                        String value,
+                      ) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(
                             value,
-                             style: TextStyle(
-                              color: Theme.of(context).textTheme.bodyLarge?.color
+                            style: TextStyle(
+                              color: Theme.of(
+                                context,
+                              ).textTheme.bodyLarge?.color,
                             ),
                           ),
                         );

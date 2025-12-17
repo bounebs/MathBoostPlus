@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'revision_6eme/revision_6eme.dart'; 
+import 'revision_6eme/revision_6eme.dart';
 import 'revision_5eme/revision_5eme.dart';
 import 'revision_4eme/revision_4eme.dart';
 import 'revision_3eme/revision_3eme.dart';
@@ -11,10 +11,7 @@ class RevisionPage extends StatelessWidget {
   // La liste des niveaux doit être passée en paramètre
   final List<String> niveaux;
 
-  const RevisionPage({
-    super.key,
-    required this.niveaux,
-  });
+  const RevisionPage({super.key, required this.niveaux});
 
   @override
   Widget build(BuildContext context) {
