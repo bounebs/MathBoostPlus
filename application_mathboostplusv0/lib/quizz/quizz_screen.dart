@@ -116,19 +116,94 @@ class _QuizzScreenState extends State<QuizzScreen> {
           ),
         ),
         child: Center(
-          // CENTRER le widget Math.tex
-          // *** MODIFICATION MAJEURE ***
-          // Utilise Math.tex pour rendre la formule LaTeX
-          child: Math.tex(
+          child: _buildResponsiveLatex(
             optionText,
-            mathStyle: MathStyle.display,
-            textStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: textColor,
-            ),
+            fontSize: 16,
+            color: textColor,
+            alignment: CrossAxisAlignment.center,
           ),
         ),
+      ),
+    );
+  }
+
+  // Méthode universelle pour afficher du LaTeX qui s'adapte à la largeur
+  Widget _buildResponsiveLatex(
+    String latexContent, {
+    double fontSize = 18,
+    Color color = Colors.black87,
+    CrossAxisAlignment alignment = CrossAxisAlignment.center,
+  }) {
+    final List<String> lines = latexContent.split(r'\\');
+
+    // On utilise LayoutBuilder pour connaître la largeur disponible
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // *** CHANGEMENT ICI ***
+        // Le FittedBox englobe toute la Column maintenant, pas chaque ligne individuellement.
+        return FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: alignment == CrossAxisAlignment.start
+              ? Alignment.centerLeft
+              : Alignment.center,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment:
+                alignment, // Aligne les lignes entre elles (gauche ou centre)
+            children: lines.map((line) {
+              String trimmedLine = line.trim();
+              if (trimmedLine.isEmpty) return const SizedBox.shrink();
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 6.0),
+                // Plus de FittedBox ici !
+                child: Math.tex(
+                  trimmedLine,
+                  mathStyle: MathStyle.display,
+                  textStyle: TextStyle(
+                    fontSize:
+                        fontSize, // La taille sera uniforme avant réduction globale
+                    fontWeight: FontWeight.w600,
+                    color: color,
+                  ),
+                  onErrorFallback: (err) => Text(
+                    trimmedLine,
+                    style: TextStyle(color: Colors.red, fontSize: fontSize),
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        );
+      },
+    );
+  }
+
+  Text quizzTitle(String niveau) {
+    Color textColor;
+    switch (niveau) {
+      case "Facile":
+        textColor = Colors.green;
+        break;
+      case "Moyen":
+        textColor = Colors.orange;
+        break;
+      case "Difficile":
+        textColor = Colors.red;
+        break;
+      case "Contrôle":
+        textColor = Colors.deepPurple;
+        break;
+      default:
+        textColor = const Color.fromARGB(255, 53, 110, 253);
+    }
+    return Text(
+      "Quiz $niveau \n ${widget.chapitre}",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: textColor,
       ),
     );
   }
@@ -153,34 +228,22 @@ class _QuizzScreenState extends State<QuizzScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // ... (Titre du Quiz inchangé) ...
-            Text(
-              "Quiz ${widget.niveau} | ${widget.chapitre}",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey.shade600,
-              ),
-            ),
+            quizzTitle(widget.niveau),
             const SizedBox(height: 25),
 
-            // --- 2. Enoncé de la question (Utilisation de Math.tex) ---
+            // --- 2. Enoncé de la question ---
             Container(
-              padding: const EdgeInsets.all(25),
+              width: double.infinity,
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Math.tex(
+              child: _buildResponsiveLatex(
                 currentQuestion.text,
-                mathStyle: MathStyle.display,
-                textStyle: const TextStyle(
-                  // Style appliqué au texte normal
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                ),
-                // L'alignement est géré par la taille du Container parent
+                fontSize: 18,
+                color: Colors.black87,
+                alignment: CrossAxisAlignment.center, // Centré pour la question
               ),
             ),
             const SizedBox(height: 30),
@@ -218,7 +281,7 @@ class _QuizzScreenState extends State<QuizzScreen> {
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       (_selectedOptionIndex ==
@@ -235,12 +298,15 @@ class _QuizzScreenState extends State<QuizzScreen> {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    // *** MODIFICATION MAJEURE ***
-                    // Utilisation de Math.tex pour le rationnel
-                    Math.tex(
+
+                    // *** MODIFICATION ***
+                    // Utilisation du spread operator (...) pour intégrer la liste générée
+                    _buildResponsiveLatex(
                       currentQuestion.rationale,
-                      mathStyle: MathStyle.display,
-                      textStyle: const TextStyle(fontSize: 14),
+                      fontSize: 18,
+                      color: Colors.black87,
+                      alignment: CrossAxisAlignment
+                          .center, // Aligné à gauche pour l'explication
                     ),
                   ],
                 ),

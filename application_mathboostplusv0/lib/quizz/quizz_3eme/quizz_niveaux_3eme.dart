@@ -110,12 +110,7 @@ class QuizzNiveau3emePage extends StatelessWidget {
               _buildNiveauButton(
                 context,
                 label: "Type Contrôle",
-                color: const Color.fromARGB(
-                  255,
-                  116,
-                  13,
-                  134,
-                ), // ou Colors.deepPurple
+                color: Colors.deepPurple, 
                 onTap: () {
                   Navigator.push(
                     context,
