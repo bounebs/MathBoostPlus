@@ -7,6 +7,12 @@ import 'Divisibilite/quizzDivisibiliteMoyen.dart';
 import 'Divisibilite/quizzDivisibiliteDifficile.dart';
 import 'Divisibilite/quizzDivisibiliteControle.dart';
 
+// Quizz sur les Fractions
+import 'Fractions/quizzFractionsFacile.dart';
+import 'Fractions/quizzFractionsMoyen.dart';
+import 'Fractions/quizzFractionsDifficile.dart';
+import 'Fractions/quizzFractionsControle.dart';
+
 // Renvoie la liste de question adapte en fonction du chapitres et du niveau
 final Map<String, Map<String, List<Question>>> QUIZ_CATALOG = {
   chapitres3eme[0]: {
@@ -14,6 +20,12 @@ final Map<String, Map<String, List<Question>>> QUIZ_CATALOG = {
     'Moyen': quizzDivisibiliteMoyen,
     'Difficile': quizzDivisibiliteDifficile,
     'Contrôle': quizzDivisibiliteControle,
+  },
+  chapitres3eme[1]: {
+    'Facile': quizzFractionsFacile,
+    'Moyen': quizzFractionsMoyen,
+    'Difficile': quizzFractionsDifficile,
+    'Contrôle': quizzFractionsControle,
   },
 };
 
