@@ -1,92 +1,93 @@
 import '../../question_model.dart';
 
 final List<Question> quizzDivisibiliteDifficile = [
-  const Question(
-    text: "Trouver le Plus Grand Commun Diviseur (PGCD) de 105 et 195.",
-    options: ["5", "15", "35", "105"],
-    correctOptionIndex: 1, // '15'
-    rationale:
-        "Décomposition : \$105 = 3\\times5\\times7\$ et \$195 = 3\\times5\\times13\$. Le PGCD est \$3 \\times 5 = 15\$.",
-  ),
-  const Question(
+  Question(
     text:
-        "Une association prépare 330 paniers salés et 390 paniers sucrés. Combien de lots identiques peut-elle faire au maximum ?",
-    options: ["15", "30", "45", "6"],
-    correctOptionIndex: 1, // '30'
+        r'\text{Trouver le Plus Grand Commun} \\ \text{Diviseur (PGCD) de 105 et 195.}',
+    options: [r'5', r'15', r'35', r'105'],
+    correctOptionIndex: 1,
     rationale:
-        "On cherche le PGCD(330, 390). \$330 = 30 \\times 11\$ et \$390 = 30 \\times 13\$. PGCD = 30.",
+        r'105 = 3 \times 5 \times 7 \\ 195 = 3 \times 5 \times 13 \\ \text{Le PGCD est } 3 \times 5 = 15.',
   ),
-  const Question(
+  Question(
     text:
-        "Sachant que \$A = 2^4 \\times 5^2 \\times 7\$ et \$B = 2^3 \\times 5^3 \\times 11\$, quel est le PPCM(A, B) ?",
+        r'\text{330 paniers salés et 390 sucrés.} \\ \text{Combien de lots identiques} \\ \text{peut-on faire au maximum ?}',
+    options: [r'15', r'30', r'45', r'6'],
+    correctOptionIndex: 1,
+    rationale:
+        r'\text{On cherche le } PGCD(330, 390). \\ 330 = 30 \times 11 \\ 390 = 30 \times 13 \\ PGCD = 30 \text{ lots.}',
+  ),
+  Question(
+    text:
+        r'\text{Soit } A = 2^4 \times 5^2 \times 7 \text{ et} \\ B = 2^3 \times 5^3 \times 11. \\ \text{Quel est le } PPCM(A, B) \text{ ?}',
     options: [
-      "\$2^7 \\times 5^5 \\times 7 \\times 11\$",
-      "\$2^3 \\times 5^2\$",
-      "\$2^4 \\times 5^3 \\times 7 \\times 11\$",
-      "\$2^4 \\times 5^3\$",
+      r'2^7 \times 5^5 \times 7 \times 11',
+      r'2^3 \times 5^2',
+      r'2^4 \times 5^3 \times 7 \times 11',
+      r'2^4 \times 5^3',
     ],
-    correctOptionIndex: 2, // '2⁴ × 5³ × 7 × 11'
+    correctOptionIndex: 2,
     rationale:
-        "Le PPCM prend les facteurs communs et non communs avec le plus grand exposant, soit \$2^4 \\times 5^3 \\times 7 \\times 11\$.",
+        r'\text{On prend facteurs communs et non} \\ \text{communs avec le plus grand exposant :} \\ 2^4 \times 5^3 \times 7 \times 11.',
   ),
-  const Question(
-    text: "Déterminer si 255 et 289 sont premiers entre eux.",
+  Question(
+    text: r'\text{Déterminer si 255 et 289} \\ \text{sont premiers entre eux.}',
     options: [
-      "Oui, car 289 n'est pas divisible par 5",
-      "Non, car les deux sont impairs",
-      "Non, car leur PGCD est 17",
-      "Oui, car leur PGCD est 1",
+      r'\text{Oui, 289 non divisible par 5}',
+      r'\text{Non, ils sont impairs}',
+      r'\text{Non, car PGCD est 17}',
+      r'\text{Oui, car PGCD est 1}',
     ],
-    correctOptionIndex: 2, // 'Non, car leur PGCD est 17'
+    correctOptionIndex: 2,
     rationale:
-        "\$255 = 3 \\times 5 \\times 17\$ et \$289 = 17^2\$. Le facteur commun est 17, donc leur PGCD est 17 et ils ne sont pas premiers entre eux.",
+        r'255 = 3 \times 5 \times 17 \\ 289 = 17^2 \\ \text{Facteur commun 17, donc non} \\ \text{premiers entre eux.}',
   ),
-  const Question(
+  Question(
     text:
-        "Si \$n\$ est un nombre entier, l'expression \$n(n+1)\$ est-elle toujours divisible par 2 ?",
-    options: ["Vrai", "Faux"],
-    correctOptionIndex: 0, // 'Vrai'
+        r"\text{Si } \mathit{n} \text{ est entier, l} \text{'} \text{expression} \\ \mathit{n}(\mathit{n}+1) \text{ est toujours divisible par 2.}",
+    options: [r'\text{Vrai}', r'\text{Faux}'],
+    correctOptionIndex: 0,
     rationale:
-        "Vrai. Parmi deux entiers consécutifs, l'un est forcément pair, donc leur produit est toujours un multiple de 2.",
+        r"\text{Vrai. Parmi deux entiers consécutifs,} \\ \text{l} \text{'} \text{un est forcément pair, donc leur} \\ \text{produit est un multiple de 2.}",
   ),
-  const Question(
+  Question(
     text:
-        "Quel est le plus petit entier à ajouter à 380 pour obtenir un multiple de 12 ?",
-    options: ["4", "8", "10", "12"],
-    correctOptionIndex: 0, // '4'
+        r'\text{Quel est le plus petit entier} \\ \text{à ajouter à 380 pour obtenir} \\ \text{un multiple de 12 ?}',
+    options: [r'4', r'8', r'10', r'12'],
+    correctOptionIndex: 0,
     rationale:
-        "\$380 \\div 12 = 31\$ reste 8. Le prochain multiple de 12 est \$380 + (12-8) = 384\$. Il faut donc ajouter 4.",
+        r'380 \div 12 = 31 \text{ reste 8.} \\ \text{Prochain multiple : } 380 + (12-8) \\ = 384. \text{ Il faut ajouter 4.}',
   ),
-  const Question(
+  Question(
     text:
-        "Un feu clignote toutes les 15 secondes, un autre toutes les 25 secondes. S'ils clignotent ensemble à midi, à quelle heure clignoteront-ils à nouveau ensemble ?",
-    options: ["40 secondes", "5 minutes", "75 secondes", "120 secondes"],
-    correctOptionIndex: 2, // '75 secondes'
+        r'\text{Un feu clignote toutes les 15s,} \\ \text{un autre toutes les 25s.} \\ \text{Quand clignotent-ils ensemble ?}',
+    options: [r'40 \text{ s}', r'5 \text{ min}', r'75 \text{ s}', r'120 \text{ s}'],
+    correctOptionIndex: 2,
     rationale:
-        "On cherche le PPCM(15, 25). \$15 = 3 \\times 5\$, \$25 = 5^2\$. PPCM = \$3 \\times 5^2 = 75\$ secondes.",
+        r'\text{On cherche le } PPCM(15, 25). \\ 15 = 3 \times 5 \text{ et } 25 = 5^2. \\ PPCM = 3 \times 5^2 = 75 \text{ secondes.}',
   ),
-  const Question(
+  Question(
     text:
-        "Quel est le plus petit nombre entier par lequel il faut multiplier 72 pour obtenir un carré parfait ?",
-    options: ["2", "4", "8", "18"],
-    correctOptionIndex: 0, // '2'
+        r'\text{Quel est le plus petit entier} \\ \text{qui multiplié par 72 donne} \\ \text{un carré parfait ?}',
+    options: [r'2', r'4', r'8', r'18'],
+    correctOptionIndex: 0,
     rationale:
-        "\$72 = 2^3 \\times 3^2\$. Pour obtenir un carré parfait, tous les exposants doivent être pairs. Il suffit de multiplier par 2 pour obtenir \$2^4 \\times 3^2 = 144\$, qui est le carré de 12.",
+        r'72 = 2^3 \times 3^2. \text{ Exposants doivent} \\ \text{être pairs. On multiplie par 2 :} \\ 2^4 \times 3^2 = 144 = 12^2.',
   ),
-  const Question(
+  Question(
     text:
-        "Deux nombres \$a\$ et \$b\$ sont tels que \$a \\times b = 180\$ et leur PGCD est 6. Quel est leur PPCM ?",
-    options: ["6", "30", "180", "1080"],
-    correctOptionIndex: 1, // '30'
+        r'\text{Si } \mathit{a} \times \mathit{b} = 180 \text{ et } PGCD = 6, \\ \text{quel est leur PPCM ?}',
+    options: [r'6', r'30', r'180', r'1080'],
+    correctOptionIndex: 1,
     rationale:
-        "On utilise la propriété : \$PGCD(a, b) \\times PPCM(a, b) = a \\times b\$. \$6 \\times PPCM = 180\$. PPCM = \$180 \\div 6 = 30\$.",
+        r'PGCD \times PPCM = a \times b \\ 6 \times PPCM = 180 \\ PPCM = 180 \div 6 = 30.',
   ),
-  const Question(
+  Question(
     text:
-        "On souhaite recouvrir une pièce rectangulaire de \$4,20 m \\times 3,60 m\$ avec le moins de dalles carrées identiques possible. Quelle doit être la taille du côté des dalles ?",
-    options: ["20 cm", "30 cm", "60 cm", "10 cm"],
-    correctOptionIndex: 2, // '60 cm'
+        r'\text{Dalles carrées max pour une pièce} \\ \text{de } 4,20 \text{ m sur } 3,60 \text{ m.} \\ \text{Taille du côté ?}',
+    options: [r'20 \text{ cm}', r'30 \text{ cm}', r'60 \text{ cm}', r'10 \text{ cm}'],
+    correctOptionIndex: 2,
     rationale:
-        "Les dimensions en cm sont 420 et 360. On cherche le PGCD(420, 360). \$420 = 60 \\times 7\$ et \$360 = 60 \\times 6\$. PGCD = 60 cm.",
+        r'\text{En cm : 420 et 360.} \\ PGCD(420, 360). \\ 420 = 60 \times 7 \text{ et } 360 = 60 \times 6. \\ \text{Taille } = 60 \text{ cm.}',
   ),
 ];
