@@ -69,20 +69,17 @@ const List<String> chapitres4eme = [
 
 const List<String> chapitres3eme = [
   "Nombres et Calculs : Divisibilité",
-  "Nombres et Calculs : PGCD",
   "Nombres et Calculs : Fractions",
   "Nombres et Calculs : Puissance et racines carrées",
   "Calcul littéral : développent et factorisation",
   "Calcul littéral : Identité remarquable",
-  "Calcul littéral : Équation du 1er degré",
+  "Calcul littéral : Équation et inéquation du 1er degré",
   "Calcul littéral : Équations-produits",
-  "Calcul littéral : Inéquations du premier degré",
   "Statistiques : Moyenne, médiane et étendue",
   "Statistiques : Lecture de diagrammes",
   "Probabilités : Notion, vocabulaire et calculs",
-  "Fonctions : notions et lecture graphique"
-      "Fonctions : fontion linéaire",
-  "Fonctions : fontion affine",
+  "Fonctions : notions et lecture graphique",
+  "Fonctions : fontion linéaire et affine",
   "Géométrie : Théorème de Pythagore",
   "Géométrie : Trigonométrie",
   "Géométrie : Théorème de Thalès",
